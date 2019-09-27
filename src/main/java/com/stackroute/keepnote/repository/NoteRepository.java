@@ -1,6 +1,8 @@
 package com.stackroute.keepnote.repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import com.stackroute.keepnote.model.Note;
 
@@ -14,7 +16,11 @@ public class NoteRepository {
 
 	/* Declare a variable called "list" to store all the notes. */
 
+	List<Note> list;
+
+
 	public NoteRepository() {
+		list=new ArrayList<>();
 
 		/* Initialize the variable using proper data type */
 	}
@@ -22,13 +28,13 @@ public class NoteRepository {
 	/* This method should return all the notes in the list */
 
 	public List<Note> getList() {
-		return null;
+		return this.list;
 	}
 
 	/* This method should set the list variable with new list of notes */
 
 	public void setList(List<Note> list) {
-
+		this.list=list;
 	}
 
 	/*
@@ -37,22 +43,26 @@ public class NoteRepository {
 	 */
 
 	public void addNote(Note note) {
-
+		this.list.add(note);
 	}
 
 	/* This method should deleted a specified note from the list */
 
 	public boolean deleteNote(int noteId) {
+		for (Note note:this.list) {
+			if (noteId == note.getNoteId()) {
+				this.list.remove(note);
+				return true;
+			}
+		}
 		/* Use list iterator to find matching note id and remove it from the list */
 		return false;
-		
-		
 	}
 
 	/* This method should return the list of notes */
 
 	public List<Note> getAllNotes() {
-		return null;
+		return this.list;
 	}
 
 	/*
@@ -62,6 +72,11 @@ public class NoteRepository {
 	 */
 
 	public boolean exists(int noteId) {
+		for (Note note:this.list) {
+			if (noteId == note.getNoteId()) {
+				return true;
+			}
+		}
 		return false;
 	}
 }
