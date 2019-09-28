@@ -38,12 +38,12 @@ public class NoteController {
 	 * Retrieve the Note object from the context.
 	 * Retrieve the NoteRepository object from the context.
 	 */
-	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+//	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
 	ApplicationContext context1=new ClassPathXmlApplicationContext("beans.xml");
 	@RequestMapping(value = "/notes",method = {RequestMethod.POST})
 	public ModelAndView view1(Model model,@RequestParam(value = "noteId") int noteID,@RequestParam(value = "noteTitle") String noteTitle,
 					   @RequestParam(value = "noteContent") String noteContent,@RequestParam(value = "noteStatus") String noteStatus){
-		Note note=context.getBean("note", Note.class);
+		Note note=context1.getBean("note", Note.class);
 		note.setNoteId(noteID);
 		note.setNoteTitle(noteTitle);
 		note.setNoteContent(noteContent);
@@ -79,7 +79,7 @@ public class NoteController {
 	@RequestMapping(value = "/saveNote")
 	public String view2(ModelMap model, @RequestParam(value = "noteId") int noteID, @RequestParam(value = "noteTitle") String noteTitle,
 						@RequestParam(value = "noteContent") String noteContent, @RequestParam(value = "noteStatus") String noteStatus){
-		Note note=context.getBean("note", Note.class);
+		Note note=context1.getBean("note", Note.class);
 		note.setNoteId(noteID);
 		note.setNoteTitle(noteTitle);
 		note.setNoteContent(noteContent);

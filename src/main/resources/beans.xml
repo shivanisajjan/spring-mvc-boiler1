@@ -5,10 +5,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="note" class="com.stackroute.keepnote.model.Note" />
+	<bean id="note" class="com.stackroute.keepnote.model.Note" scope="prototype" />
 	<!--  Add a bean element with ID as "note" for Note model with scope prototype-->
 	
 	<!--  Add a bean element with ID as "noteRepository" for NoteRepository model -->
-	<bean id="noteRepository" class="com.stackroute.keepnote.repository.NoteRepository" />
+	<bean id="noteRepository" class="com.stackroute.keepnote.repository.NoteRepository"/>
 
 </beans>
